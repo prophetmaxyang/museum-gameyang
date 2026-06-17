@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>枫泾小掌柜·时光信箱</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        canvas { display: block; max-width: 100%; max-height: 100vh; }
+
+        /* ==== 昵称输入 Modal ==== */
+        #nicknameModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        #nicknameModal.show { display: flex; }
+        .nickname-box {
+            background: #1a1a2e;
+            border: 2px solid #c9a84c;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            width: 82%;
+            max-width: 420px;
+        }
+        .nickname-box h3 {
+            color: #c9a84c;
+            font-family: serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .nickname-box input {
+            width: 100%;
+            height: 50px;
+            font-size: 22px;
+            text-align: center;
+            background: #2d2d44;
+            color: #f0e6d3;
+            border: 2px solid #c9a84c;
+            border-radius: 10px;
+            outline: none;
+            font-family: serif;
+            margin-bottom: 20px;
+        }
+        .nickname-box input::placeholder { color: #5a5a7a; }
+        .nickname-box button {
+            font-size: 20px;
+            color: #1a1a2e;
+            background: #c9a84c;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 48px;
+            font-family: serif;
+            cursor: pointer;
+        }
+        .nickname-box button:active { background: #dbb95a; }
+
+        /* ==== 退出按钮 ==== */
+        #exitBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            font-size: 20px;
+            color: #1a1a2e;
+            background: #c9a84c;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 52px;
+            font-family: serif;
+            cursor: pointer;
+        }
+        #exitBtn:active { background: #dbb95a; }
+    </style>
+</head>
+<body>
+    <!-- 昵称输入弹窗 -->
+    <div id="nicknameModal">
+        <div class="nickname-box">
+            <h3>你的名字是？</h3>
+            <input type="text" id="nicknameInput" maxlength="10" placeholder="输入昵称" autocomplete="off" />
+            <button id="nicknameConfirm">确定</button>
+        </div>
+    </div>
+    <!-- 退出按钮 -->
+    <button id="exitBtn" onclick="window.close();location.href='about:blank';">开始你的旅程</button>
+
+    <script src="phaser.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
